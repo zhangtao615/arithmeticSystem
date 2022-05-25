@@ -7,23 +7,6 @@ func main() {
 	doubleList.AddNodeFromHead(1)
 	doubleList.AddNodeFromHead(2)
 	doubleList.AddNodeBehindTail(3)
-	//doubleList.DeleteTail()
-	//doubleList.DeleteHead()
-	length := getLength(doubleList.Head)
-
-	dummy := &ListNode{nil, doubleList.Head, 0}
-	for i := 0; i < length; i++ {
-		fmt.Println(dummy.Next.Val)
-		dummy = dummy.Next
-	}
-}
-
-func getLength(list *ListNode) int {
-	length := 0
-	for ; list != nil; list = list.Next {
-		length++
-	}
-	return length
 }
 
 type ListNode struct {
@@ -40,7 +23,7 @@ type List struct {
 
 // 从头节点添加
 
-func (list *List) AddNodeFromHead(value int) int {
+func (list *List) AddNodeFromHead(value int) {
 	newNode := new(ListNode)
 	newNode.Val = value
 
@@ -54,12 +37,11 @@ func (list *List) AddNodeFromHead(value int) int {
 		list.Head = newNode
 	}
 	list.Size += 1
-	return list.Size
 }
 
 // 从链表尾部添加
 
-func (list *List) AddNodeBehindTail(value int) int {
+func (list *List) AddNodeBehindTail(value int) {
 	newNode := new(ListNode)
 	newNode.Val = value
 
@@ -77,66 +59,34 @@ func (list *List) AddNodeBehindTail(value int) int {
 	}
 
 	list.Size += 1
-	return list.Size
 }
 
 // 删除头节点
 
-func (list *List) DeleteHead() *ListNode {
-	currentHead := list.Head
+func (list *List) DeleteHead() {
 	if list.Size < 1 {
 		fmt.Errorf("链表为空")
+		return
 	} else {
 		newHead := list.Head.Next
 		newHead.Prev = nil
 		list.Head = newHead
-		list.Size -= 1
 	}
-	return currentHead
+	list.Size -= 1
 }
 
 // 删除尾部节点
 
-func (list *List) DeleteTail() *ListNode {
-	currentTail := list.Head
+func (list *List) DeleteTail() {
 	if list.Size < 1 {
 		fmt.Errorf("链表为空")
+		return
 	} else {
 		newTail := list.Tail.Prev
 		newTail.Next = nil
 		list.Tail = newTail
-		list.Size -= 1
 	}
-	return currentTail
-}
-
-// 删除任意节点
-func (list *List) Remove(node *ListNode) *ListNode {
-	// 如果是node == nil
-	if node == nil {
-		fmt.Errorf("节点不存在")
-	} else if node == list.Head {
-		list.DeleteHead()
-	} else if node == list.Tail {
-		list.DeleteTail()
-	} else {
-		node.Prev.Next = node.Next
-		node.Next.Prev = node.Prev
-		list.Size -= 1
-	}
-	return node
-}
-
-// 添加任意节点
-func (list *List) Add(node *ListNode) int {
-	if list.Size < 1 {
-		list.AddNodeFromHead(node.Val)
-	} else {
-		node.Prev.Next = node
-		node.Next.Prev = node
-	}
-	list.Size += 1
-	return list.Size
+	list.Size -= 1
 }
 
 func CreateDoubleList() (list *List) {

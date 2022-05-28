@@ -4,12 +4,13 @@ package main
 import (
 	"algorithmSystem/Chapter1/LinearSearch/Search"
 	"fmt"
+	"time"
 )
 
 func main() {
-	nums := []float32{1.1, 2.2, 3.3, 4.4, 5.5, 6.6}
-
-	res := Search.Search(nums, 5.4)
-
-	fmt.Printf("target's index is %d", res)
+	nums := Search.GeneratorOrderedArray(100000000)
+	start := time.Now()
+	Search.LinerSearch(nums, 100000000-1)
+	end := time.Since(start)
+	fmt.Println("函数执行时间", end)
 }

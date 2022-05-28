@@ -2,15 +2,15 @@
 package main
 
 import (
-	"algorithmSystem/Chapter1/LinearSearch/Search"
+	"algorithmSystem/Chapter1/Search/LinerSearch"
 	"fmt"
 	"time"
 )
 
 func main() {
-	nums := Search.GeneratorOrderedArray(100000000)
+	nums := LinerSearch.GeneratorOrderedArray(100000000)
 	start := time.Now()
-	Search.LinerSearch(nums, 100000000-1)
+	LinerSearch.LinerSearch(nums, 100000000-1)
 	end := time.Since(start)
 	fmt.Println("函数执行时间", end)
 }

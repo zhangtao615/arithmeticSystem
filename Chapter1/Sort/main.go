@@ -2,7 +2,7 @@
 package main
 
 import (
-	"algorithmSystem/Chapter1/LinearSearch/Search"
+	"algorithmSystem/Chapter1/Search/LinerSearch"
 	"algorithmSystem/Chapter1/Sort/SortDict"
 	"fmt"
 	"time"
@@ -10,9 +10,10 @@ import (
 
 func main() {
 	//var nums = []int{1, 5, 4, 7, 3, 9}
-	var arr = Search.RandomArray(10000)
+	var arr = LinerSearch.RandomArray(100000)
 	start := time.Now()
-	SortDict.SelectionSort(arr)
+	//SortDict.SelectionSortReverse(arr)
+	SortDict.InsertionSortOptimize(arr)
 	for i := 1; i < len(arr); i++ {
 		if arr[i] < arr[i-1] {
 			fmt.Println("未排序成功")

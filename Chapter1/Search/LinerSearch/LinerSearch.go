@@ -1,4 +1,4 @@
-package Search
+package LinerSearch
 
 func LinerSearch[T comparable](nums []T, target T) int {
 	for i := 0; i < len(nums); i++ {

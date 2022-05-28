@@ -1,4 +1,4 @@
-package Search
+package LinerSearch
 
 import "math/rand"
 

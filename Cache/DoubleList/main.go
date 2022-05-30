@@ -1,24 +1,24 @@
-package main
+package DoubleList
 
 import "fmt"
 
-func main() {
-	doubleList := CreateDoubleList()
-	doubleList.AddNodeFromHead(1)
-	doubleList.AddNodeFromHead(2)
-	doubleList.AddNodeBehindTail(3)
-	//doubleList.DeleteTail()
-	//doubleList.DeleteHead()
-	length := getLength(doubleList.Head)
+//func main() {
+//	doubleList := CreateDoubleList()
+//	doubleList.AddNodeFromHead(1)
+//	doubleList.AddNodeFromHead(2)
+//	doubleList.AddNodeBehindTail(3)
+//	//doubleList.DeleteTail()
+//	//doubleList.DeleteHead()
+//	length := getLength(doubleList.Head)
+//
+//	dummy := &ListNode{nil, doubleList.Head, 0}
+//	for i := 0; i < length; i++ {
+//		fmt.Println(dummy.Next.Val)
+//		dummy = dummy.Next
+//	}
+//}
 
-	dummy := &ListNode{nil, doubleList.Head, 0}
-	for i := 0; i < length; i++ {
-		fmt.Println(dummy.Next.Val)
-		dummy = dummy.Next
-	}
-}
-
-func getLength(list *ListNode) int {
+func GetLength(list *ListNode) int {
 	length := 0
 	for ; list != nil; list = list.Next {
 		length++

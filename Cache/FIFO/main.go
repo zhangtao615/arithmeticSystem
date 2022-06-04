@@ -19,6 +19,7 @@ type Cache interface {
 	DelOldest()
 	// UseBytes 缓存中元素所占内存大小
 	UseBytes() int
+	// Size 缓存中元素数量
 }
 
 type Value interface {
@@ -66,6 +67,10 @@ func (f *fifo) Del(key string) {
 }
 
 func (f *fifo) Len() int {
+	return f.ll.Len()
+}
+
+func (f *fifo) Size() int {
 	return f.ll.Len()
 }
 

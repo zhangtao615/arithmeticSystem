@@ -16,5 +16,5 @@ func main() {
 		cache.Set(strconv.Itoa(i), i)
 	}
 
-	fmt.Println(cache.Get("127"))
+	fmt.Println(cache)
 }
